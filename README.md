@@ -1,0 +1,2 @@
+# INFORMATIKA
+## Ko sme praili?
