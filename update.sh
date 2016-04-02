@@ -1,5 +1,5 @@
 #!/bin/bash
 git add -A
 git status
-git commit
+git commit -m "Random commit"
 git push
