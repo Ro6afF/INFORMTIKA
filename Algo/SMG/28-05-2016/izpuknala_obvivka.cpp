@@ -33,7 +33,7 @@ int main()
     int cur_cand = 1;
 
     shell.insert(cur);
-    std::cout << "( " << v[cur_cand].x << ", " << v[0].y << " )\n";
+    std::cout << "( " << v[0].x << ", " << v[0].y << " )\n";
 
     while(true)
     {
@@ -44,11 +44,11 @@ int main()
                 cur_cand = i;
             }
         }
-        if(shell.insert(cur_cand).second == true)
+        if(shell.insert(cur_cand).second == true && cur_cand < n)
         {
             std::cout << "( " << v[cur_cand].x << ", " << v[cur_cand].y << " )\n";
             cur = cur_cand;
-            cur_cand++;
+            cur_cand++;a
         }
         else
         {
