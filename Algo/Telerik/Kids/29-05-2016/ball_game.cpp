@@ -7,7 +7,7 @@ using namespace std;
 bool alreadyLose[10]= {false};
 int diapason_MIN[10]= {1,2,3,4};
 int diapason_MAX[10]= {3,4,5,5};
-int number_of_balls=10,number_of_players=4,player_on_turn=0,min_balls=1,max_balls=3;
+int number_of_balls=10,number_of_players=2,player_on_turn=0,min_balls=1,max_balls=3;
 int onlinePlayers=number_of_players;
 int player_uses[4]= {0,1,2,3};
 void switch_diapasons()
