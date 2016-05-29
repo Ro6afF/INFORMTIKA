@@ -1,0 +1,134 @@
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <utility>
+
+std::vector<std::vector<std::pair<int, int>>> v;
+std::priority_queue<std::pair<int, int>,
+	std::vector<std::pair<int, int>>, std::greater<std::pair<int, int>>> q;
+
+std::vector<int> dist;
+
+int res = 0;
+
+int main()
+{
+	std::ios::sync_with_stdio(false);
+	std::cin.tie(nullptr);
+	int n, m;
+	std::cin >> n >> m;
+	int start_, mid1, mid2, end_;
+	std::cin >> start_ >> end_;
+	std::cin >> mid1 >> mid2;
+	v.resize(n);
+	dist.resize(n);
+	start_ --;
+	end_ --;
+	mid1 --;
+	mid2 --;
+	for(int i = 0; i < m; i++)
+	{
+		int t, f, d;
+		std::cin >> t >> f >> d;
+		t --;
+		f --;
+		v[t].push_back({d, f});
+		v[f].push_back({d, t});
+	}
+
+	q.push({0, start_});
+
+	while(!q.empty())
+	{
+		auto sq = q.top();
+		q.pop();
+		dist[sq.second] = sq.first;
+		for(int i = 0; i < v[sq.second].size(); i++)
+		{
+			if(dist[v[sq.second][i].second] == 0|| dist[v[sq.second][i].second] > sq.first + v[sq.second][i].first)
+			{
+				dist[v[sq.second][i].second] = sq.first + v[sq.second][i].first;
+				q.push({sq.first + v[sq.second][i].first, v[sq.second][i].second});
+			}
+		}
+	}
+	bool cur = true;
+	if(dist[mid2] < dist[mid1])
+	{
+		cur = false;
+	}
+	if(cur)
+	{
+		res += dist[mid1];
+		q.push({0, mid1});
+
+		while(!q.empty())
+		{
+			auto sq = q.top();
+			q.pop();
+			dist[sq.second] = sq.first;
+			for(int i = 0; i < v[sq.second].size(); i++)
+			{
+				if(dist[v[sq.second][i].second] == 0|| dist[v[sq.second][i].second] > sq.first + v[sq.second][i].first)
+				{
+					dist[v[sq.second][i].second] = sq.first + v[sq.second][i].first;
+					q.push({sq.first + v[sq.second][i].first, v[sq.second][i].second});
+				}
+			}
+		}
+
+		res += dist[mid2];
+		std::cout << dist[mid2] << std::endl;
+		dist.empty();
+		dist.resize(n);
+
+		q.push({0, mid2});
+
+	}
+	else
+	{
+		res += dist[mid2];
+		q.push({0, mid2});
+
+		while(!q.empty())
+		{
+			auto sq = q.top();
+			q.pop();
+			dist[sq.second] = sq.first;
+			for(int i = 0; i < v[sq.second].size(); i++)
+			{
+				if(dist[v[sq.second][i].second] == 0|| dist[v[sq.second][i].second] > sq.first + v[sq.second][i].first)
+				{
+					dist[v[sq.second][i].second] = sq.first + v[sq.second][i].first;
+					q.push({sq.first + v[sq.second][i].first, v[sq.second][i].second});
+				}
+			}
+		}
+
+		res += dist[mid1];
+		dist.empty();
+		dist.resize(n);
+
+		q.push({0, mid1});
+	}
+	while(!q.empty())
+	{
+		auto sq = q.top();
+		q.pop();
+		dist[sq.second] = sq.first;
+		for(int i = 0; i < v[sq.second].size(); i++)
+		{
+			if(dist[v[sq.second][i].second] == 0 || dist[v[sq.second][i].second] > sq.first + v[sq.second][i].first)
+			{
+				dist[v[sq.second][i].second] = sq.first + v[sq.second][i].first;
+				q.push({sq.first + v[sq.second][i].first, v[sq.second][i].second});
+			}
+		}
+	}
+	res += dist[end_];
+	dist.empty();
+	dist.resize(n);
+
+	std::cout << res << std::endl;
+	return 0;
+}
