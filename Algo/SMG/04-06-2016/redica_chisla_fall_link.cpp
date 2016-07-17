@@ -10,20 +10,20 @@ int main()
     std::cin >> n;
     v.resize(n);
     fl.resize(n);
-    for(int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
         std::cin >> v[i];
         fl[i] = -1;
     }
-    for(int i = 1; i < n; i++)
+    for (int i = 1; i < n; i++)
     {
         int curr = i - 1;
-        if(v[i] <= v[curr])
+        if (v[i] <= v[curr])
         {
-            while(v[i] <= v[curr])
+            while (v[i] <= v[curr])
             {
                 curr = fl[curr];
-                if(curr < 0)
+                if (curr < 0)
                 {
                     break;
                 }
@@ -31,9 +31,9 @@ int main()
         }
         fl[i] = curr;
     }
-    for(int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
-        if(fl[i]==-1)
+        if (fl[i] == -1)
         {
             std::cout << "A\t";
             continue;

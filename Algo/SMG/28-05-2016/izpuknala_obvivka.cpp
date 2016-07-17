@@ -1,13 +1,13 @@
-#include <iostream>
-#include <vector>
-#include <utility>
 #include <algorithm>
+#include <iostream>
 #include <set>
+#include <utility>
+#include <vector>
 
 #define x first
 #define y second
 
-int area (int dX0, int dY0, int dX1, int dY1, int dX2, int dY2)
+int area(int dX0, int dY0, int dX1, int dY1, int dX2, int dY2)
 {
     int dArea = (dX0 + dX1) * (dY0 - dY1) + (dX1 + dX2) * (dY1 - dY2) + (dX0 + dX2) * (dY2 - dY0);
     return dArea;
@@ -20,7 +20,7 @@ int main()
 {
     int n;
     std::cin >> n;
-    for(int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
         int a, b;
         std::cin >> a >> b;
@@ -35,20 +35,21 @@ int main()
     shell.insert(cur);
     std::cout << "( " << v[0].x << ", " << v[0].y << " )\n";
 
-    while(true)
+    while (true)
     {
-        for(int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++)
         {
-            if(area(v[i].x, v[i].y, v[cur].x, v[cur].y, v[cur_cand].x, v[cur_cand].y) < 0)
+            if (area(v[i].x, v[i].y, v[cur].x, v[cur].y, v[cur_cand].x, v[cur_cand].y) < 0)
             {
                 cur_cand = i;
             }
         }
-        if(shell.insert(cur_cand).second == true && cur_cand < n)
+        if (shell.insert(cur_cand).second == true && cur_cand < n)
         {
             std::cout << "( " << v[cur_cand].x << ", " << v[cur_cand].y << " )\n";
             cur = cur_cand;
-            cur_cand++;a
+            cur_cand++;
+            a
         }
         else
         {
