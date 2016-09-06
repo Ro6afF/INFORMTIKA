@@ -1,0 +1,34 @@
+с++ 1 х 1
+c++ 2 x 1
+c++ 3 x 1 
+js 1 x 3
+js 2 x 1
+js 3 x 1
+js 4 x 1
+-----------------------
+Total: 9
+Teached things: 7
+c++: 3
+js: 6
+-----------------------
+-----------------------
+
+Combinations(by prority):
+js 4 + c++ 3
+js 4 + c++ 2
+js 3 + c++ 3
+js 3 + c++ 2
+js 2 + c++ 2
+js 2 + c++ 1
+js 1 + c++ 1
+
+-----------------------
+
+Provisions:(WTF????)
+Saturday: 3 thing in diferent times
+Sunday: 6 things(2 in the same time)
+
+-----------------------
+
+Levels of smartness:
+
